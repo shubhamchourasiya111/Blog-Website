@@ -1,0 +1,73 @@
+{% include 'header.html'  %} {% load static %}
+
+{%block content%}
+
+<div class="container-custom">
+
+    <div class="container-custom">
+
+
+        <!-- Set up your HTML -->
+        <div class="owl-carousel">
+    
+    
+            {% for cat in cats %}
+    
+            <div class="card item" style="margin-left:5px;">
+    
+                <div class="img-container">
+    
+                <img src="/media/{{cat.image}}"  width="150" height="200">
+                    
+
+                </div>
+                <div class="card-content">
+    
+                    <div class="card-title">
+                        {{cat.title}}
+                </div>
+    
+                    
+                    <div class="container center-align mt20">
+                        <a href="category{{cat.url}}" class="btn bg-primary">VIEW</a>
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+    
+            {%endfor%}
+    
+        </div>
+    
+    
+    </div>
+    
+    
+    
+    
+<div class="container my-3">
+{% for p in posts  %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Article  by {{p.url}}</strong>
+            <h3 class="mb-0">{{p.title}}</h3>
+            <p class="card-text mb-auto"> {{ p.content | truncatewords:10 |safe}}</p>
+            </div>
+            <div class="col s12 m4">
+                <img src="/media/{{p.image}}" width="250" height="150">
+
+            </div> 
+            <div class="mt20">
+                <a href="blogging/{{p.url}}" class="btn  bg-primary ">Read More..</a>
+            </div>
+              
+        
+        </div>
+        {% endfor%}
+        </div>
+
+      
+        
+{%endblock%}

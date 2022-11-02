@@ -1,0 +1,54 @@
+{% include 'header.html'  %} {% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page in HTML with CSS Code Example</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="/static/css/login.css"/>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="box-form">
+	<div class="left">
+		<div class="overlay">
+		<h1> Welcome Blog.com</h1>
+		<p>if You Don't Have an account Create an account and enjoy this service and enjoying reading Beautifull Blog</p>
+		
+		</div>
+	</div>
+	
+	
+		<div class="right">
+		<h2>Login</h2>
+		<form  action="blogging"   method="post">
+		<div class="inputs">
+			<input type="text" placeholder="user name" name="username" required>
+			<br>
+			<input type="password" placeholder="password" name="password" required>
+		</div>
+			
+			<br><br>
+			{% csrf_token %}
+		
+			
+			<br>
+			<button type="submit">Login</button>
+			Forgot <a href="#"> password? </a>
+	</div>
+	
+</div>
+<!-- partial -->
+</form> 
+<div>
+{% for message in messages %}
+{{message}}
+{% endfor %}</div>
+
+
+
+</body>
+</html>
