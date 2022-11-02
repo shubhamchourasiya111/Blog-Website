@@ -8,14 +8,14 @@ from django.views.decorators.csrf import csrf_exempt
 #create a login page
 def home(request):
     logout(request)
-    #messages.info(request," logout ")
+    
     return render(request,"index.html" )
 @csrf_exempt   
 def login_page(request):
-    print("call")
+    
 
     if request.method == "POST":
-        print("log")
+        
         username=request.POST["username"]
         pass1=request.POST["password"]
         user =authenticate(username=username, password=pass1)
@@ -24,24 +24,20 @@ def login_page(request):
         
         if user is not None:
             login(request,user)
-            print("user log in")
-            posts = Post.objects.all()
-            print(posts)
-            cats = Category.objects.all()
-            print(cats)
-
             
+            posts = Post.objects.all()
+            cats = Category.objects.all() 
 
             data = {
                 'posts': posts,
                 'cats': cats
             }
-            print(data)
+            
             return render(request, 'blogging.html', data)
     
         else: 
             messages.info(request," incorrect id and password")
-            print("user not registred")
+            
             return render(request,"index.html" )
 
     else:
@@ -68,14 +64,14 @@ def saveform(request):
         pass2=request.POST["pass2"]
         gender=request.POST["gender"]
         if pass1 ==pass2:
-            print("enter pass")
+            
             if User.objects.filter(username=username).exists():
                 print("user allreday refister")
                 messages.info(request,"username allready taken try another username")
                 return render(request,"signup.html")
             elif User.objects.filter(email=email).exists():
                 messages.info(request," Email allready taken try another username")
-                print("user allreday refister")
+                
                 return render(request,"signup.html")
                     
                 
@@ -84,10 +80,10 @@ def saveform(request):
 
                 d=User.objects.create_user(username=username,email=email,password=pass1,first_name= first_name,last_name=last_name)
                 d.save()
-                print("save")
+              
                 return render(request,"index.html")
         else:
-            print("pass no")
+            
             messages.info(request," password not matching")
             return render(request,"signup.html")
 
